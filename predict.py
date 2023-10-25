@@ -95,7 +95,7 @@ class Predictor(BasePredictor):
         """Run a single prediction on the model"""
         if seed is None:
             seed = int.from_bytes(os.urandom(2), "big")
-        generator = torch.Generator("cuda").manual_seed(0)
+        generator = torch.Generator("cuda").manual_seed(seed)
 
         images = self.__pipe(
             prompt=prompt,
